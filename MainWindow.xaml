@@ -1,0 +1,42 @@
+﻿<Window x:Class="MsSQLDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MsSQLDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Button Margin="5" Content="Load from SQL" Click="btnLoad_Click" Grid.Column="0" Grid.Row="0"/>
+        <ListView Margin="5" x:Name="lvResponse" Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" />
+        <TextBlock Margin="5" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" TextWrapping="Wrap">
+            Dieses Programm demonstriert eine Verbindung zu einem Microsoft SQL Server.<LineBreak/>
+            Getestet wurde es mit einem 
+            <Hyperlink  NavigateUri="https://go.microsoft.com/fwlink/?linkid=866662"  RequestNavigate="hyperlink_RequestNavigate"> SQL Server 2019 Developer Edition</Hyperlink>
+            , welcher kostenlos bei Microsoft verfügbar ist.<LineBreak/><LineBreak/>
+            Als Abhängigkeit wurde das Paket "System.Data.SqlClient" von Microsoft geladen welches die Funktionalität bereitstellt. 
+            Beim Klick auf den Load Button wird eine Verbindung zu der Datenbank erstellt und eine Spalte aus einer voreingestellten 
+            Tabelle ausgelesen. Diese Liste an Namen wird im Programm gespeichert und über das GUI-Fenster angezeigt. Hierbei wird 
+            die Bindung verwendet sodass Änderungen an den Daten sofort im GUI sichtbar werden.<LineBreak/>
+            <LineBreak/>
+            Serverseitig wurden folgende Einstellungen vorgenommen:<LineBreak/>
+            - Custom-Installation bei der nur die Database-Engine ausgewählt wurde.<LineBreak/>
+            - Eine Datenbank namens Northwind wurde erstellt (CREATE DATABASE [Northwind])<LineBreak/>
+            - Das SQL-Script der Datenbank <Hyperlink NavigateUri="https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs" RequestNavigate="hyperlink_RequestNavigate">"Northwind"</Hyperlink> wurde eingespielt<LineBreak/> 
+            - Nutzer wurde erstellt und standardmässig auf die "Northwind" Datenbank geleitet<LineBreak/>
+            - Der Nutzer hat nur die Select-Rechte innerhalb der "Northwind" Datenbank bekommen<LineBreak/>
+            <LineBreak/>
+            Die Einstellungen kann man am einfachsten über das 
+            <Hyperlink NavigateUri="https://aka.ms/ssmsfullsetup" RequestNavigate="hyperlink_RequestNavigate">SSMS (SQL Server Management Studio)</Hyperlink> machen.
+        </TextBlock>
+    </Grid>
+</Window>
