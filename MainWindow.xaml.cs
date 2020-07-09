@@ -58,15 +58,15 @@ namespace MsSQLDemo
         {
             try // Da der Prozessstart durchaus fehlschlagen kann werden mögliche Fehler abgefangen.
             {
-                Process.Start( new ProcessStartInfo { FileName = ((Hyperlink)sender).NavigateUri.ToString(), UseShellExecute = true }); // konvertiert die URI aus dem Hyperlink in einen Text und sendet ihn an die Shell. Diese wiederum erkennt das https und startet daraufhin den eingestellten Standardbrowser.
+                Process.Start(new ProcessStartInfo { FileName = ((Hyperlink)sender).NavigateUri.ToString(), UseShellExecute = true }); // konvertiert die URI aus dem Hyperlink in einen Text und sendet ihn an die Shell. Diese wiederum erkennt das https und startet daraufhin den eingestellten Standardbrowser.
                 e.Handled = true;
             }
-            catch (Exception ex)
+            catch (Exception ex) // Pokemon Exception handling, "gonna catch 'em all". Bietet sich an wenn Fehler das eigendliche Programm nicht beeinflussen.
             {
                 //falls etwas schief geht (z.B. Datei nicht gefunden) dann wird eine Nachricht an den Nutzer geschickt in welcher der Link auch nochmal nachlesbar ist.
                 MessageBox.Show($" {ex.Message} \n {e.Uri.ToString()} ", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-    };
+    }
 }
 
